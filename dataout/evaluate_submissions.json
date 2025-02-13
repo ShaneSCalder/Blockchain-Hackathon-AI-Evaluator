@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "CryptoGarden",
+    "ai_evaluation": {
+      "short_pitch_score": 4,
+      "originality_score": 5,
+      "feasibility_score": 3,
+      "impact_score": 4,
+      "theme_alignment_score": 5,
+      "summary": "CryptoGarden is a platform that combines urban farming with blockchain technology. Users earn NFT badges for their gardening achievements, which can be traded or used to unlock discounts on eco-friendly products.",
+      "open_questions": [
+        "How will the platform ensure the authenticity of photo submissions?",
+        "What is the plan for scaling up the IoT sensor verification system?",
+        "How will the value of the NFT badges be determined and maintained?"
+      ]
+    },
+    "overall_score": 3.35
+  },
+  {
+    "id": 3,
+    "name": "DeFiLens",
+    "ai_evaluation": {
+      "short_pitch_score": 4,
+      "originality_score": 3,
+      "feasibility_score": 4,
+      "impact_score": 5,
+      "theme_alignment_score": 5,
+      "summary": "DeFiLens is an AI-powered dashboard that aggregates data from major DeFi protocols to provide key metrics, real-time APY changes, and risk alerts. It aims to simplify DeFi analytics, making it more accessible for casual users and serving as a tool for risk management, yield optimization, and education.",
+      "open_questions": [
+        "How does the AI-driven algorithm work in highlighting key metrics?",
+        "What measures are in place to ensure the accuracy of the data?",
+        "How does the platform handle sudden liquidity withdrawals or governance changes?"
+      ]
+    },
+    "overall_score": 3.3
+  },
+  {
+    "id": 2,
+    "name": "ChainChat",
+    "ai_evaluation": {
+      "short_pitch_score": 4,
+      "originality_score": 4,
+      "feasibility_score": 3,
+      "impact_score": 4,
+      "theme_alignment_score": 5,
+      "summary": "ChainChat is a decentralized messaging service that uses blockchain technology for security and tokenized moderation. It offers end-to-end encryption, optional anonymity, and a self-regulating ecosystem to control spam and abusive content.",
+      "open_questions": [
+        "How will the system ensure fair use of the upvote/downvote mechanism?",
+        "What measures are in place to prevent misuse of the anonymity feature?",
+        "How will the system handle scalability issues inherent to blockchain technology?"
+      ]
+    },
+    "overall_score": 3.15
+  }
+]
