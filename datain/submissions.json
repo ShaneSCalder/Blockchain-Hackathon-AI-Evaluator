@@ -1,0 +1,24 @@
+[
+    {
+      "id": 1,
+      "name": "CryptoGarden",
+      "high_level_pitch": "A sustainable farming NFT that rewards real-world garden efforts.",
+      "project_pitch": "CryptoGarden aims to bridge urban farming and blockchain technology. By gamifying real-world gardening tasks, participants earn NFT badges representing their progress in cultivating crops or managing a small garden. The platform tracks each user's horticultural achievements via photo submissions, verified with optional IoT sensors for authenticity. Over time, the NFT badges could be traded or used to unlock discounts on eco-friendly products. Our goal is to promote healthy living, environmental awareness, and decentralize the concept of sustainable agriculture through fun and transparent incentives on a public blockchain.",
+      "pitch_video_url": "https://example.com/cryptogarden-video"
+    },
+    {
+      "id": 2,
+      "name": "ChainChat",
+      "high_level_pitch": "A decentralized messaging service with tokenized moderation.",
+      "project_pitch": "ChainChat is a Web3 communication platform that uses blockchain to secure user messages and crowdsource moderation. Instead of a single entity controlling content policies, our native token allows the community to upvote or downvote messages, effectively regulating spam or abusive content. Messages are encrypted end-to-end and stored on an IPFS-like network. The app also offers optional anonymity layers, letting users create ephemeral usernames backed by smart-contract logic for identity verification. By merging decentralized storage and token-based governance, ChainChat aims to provide a truly censorship-resistant yet self-regulating messaging ecosystem.",
+      "pitch_video_url": "https://example.com/chainchat-demo"
+    },
+    {
+      "id": 3,
+      "name": "DeFiLens",
+      "high_level_pitch": "An AI-powered dashboard that simplifies DeFi analytics.",
+      "project_pitch": "DeFiLens aggregates data from major decentralized finance protocols—such as lending platforms, DEXs, and yield aggregators—and uses AI-driven algorithms to highlight key metrics. The dashboard helps casual users see where their crypto assets are allocated, track real-time APY changes, and receive alerts if any protocol's risk profile spikes (e.g., sudden liquidity withdrawals or governance changes). By combining machine learning with on-chain analytics, we aim to lower the barrier to entry for DeFi participants, offering intuitive visualizations of complex data in one place. The ultimate vision is to become a one-stop tool for risk management, yield optimization, and educational guidance in the decentralized finance space.",
+      "pitch_video_url": "https://example.com/defilens-showcase"
+    }
+  ]
+  
