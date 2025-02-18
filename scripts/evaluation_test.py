@@ -23,13 +23,35 @@ WEIGHTS = {
     "theme_alignment": 0.15,
 }
 
-def build_prompt(high_level_pitch, project_pitch):
+def build_prompt(high_level_pitch, project_pitch, role):
     """
-    Construct the prompt describing the hackathon evaluation instructions.
-    We'll ask the AI for a JSON response with scores and a summary.
+    Construct the prompt for a specific evaluator role.
     """
+    role_descriptions = {
+        "entrepreneur": """
+You are an experienced entrepreneur evaluating hackathon projects. Focus on scalability, market potential, and the business opportunity this project represents. Consider whether this idea can attract investors, sustain growth, and differentiate itself in a competitive space.
+""",
+        "financial": """
+You are a financial expert evaluating hackathon projects. Focus on the revenue model, investment potential, and financial sustainability of the project. Assess how well the business can scale profitably, attract funding, and manage operational costs.
+""",
+        "marketing": """
+You are a marketing expert evaluating hackathon projects. Focus on the go-to-market strategy, branding, and customer acquisition potential. Assess the effectiveness of the project’s outreach strategy, its ability to generate interest, and its alignment with market needs.
+""",
+        "legal": """
+You are a legal expert evaluating hackathon projects. Focus on regulatory compliance, intellectual property, and legal risks. Assess whether the project has considered legal frameworks, data privacy, and protection of proprietary information.
+""",
+        "cto": """
+You are a CTO evaluating hackathon projects. Focus on the technical feasibility, infrastructure, and engineering decisions behind the project. Assess how scalable, secure, and efficient the technology is, as well as its potential for real-world implementation.
+""",
+        "developer": """
+You are a software engineer evaluating hackathon projects. Focus on the code quality, implementation complexity, and maintainability. Assess whether the project follows best coding practices, is well-documented, and is efficient in execution.
+"""
+    }
+
+    role_prompt = role_descriptions.get(role, "You are an AI assistant evaluating a hackathon project.")
+
     prompt_template = f"""
-You are an AI assistant helping to evaluate hackathon projects.
+{role_prompt}
 
 **HIGH-LEVEL PITCH**:
 {high_level_pitch}
@@ -38,11 +60,12 @@ You are an AI assistant helping to evaluate hackathon projects.
 {project_pitch}
 
 Evaluate the project according to these criteria (each on a 1–5 scale):
-1) short_pitch_score
-2) originality_score
-3) feasibility_score
-4) impact_score
-5) theme_alignment_score
+
+1) {role}_score_1
+2) {role}_score_2
+3) {role}_score_3
+4) {role}_score_4
+5) {role}_score_5
 
 Then:
 - Provide a concise 2–3 sentence summary of the project.
@@ -51,40 +74,43 @@ Then:
 Return your answer in JSON format without extra commentary, for example:
 
 {{
-  "short_pitch_score": <number>,
-  "originality_score": <number>,
-  "feasibility_score": <number>,
-  "impact_score": <number>,
-  "theme_alignment_score": <number>,
+  "{role}_score_1": <number>,
+  "{role}_score_2": <number>,
+  "{role}_score_3": <number>,
+  "{role}_score_4": <number>,
+  "{role}_score_5": <number>,
   "summary": "...",
   "open_questions": ["...", "..."]
 }}
     """
+
     return prompt_template.strip()
 
 def get_ai_evaluation(high_level_pitch, project_pitch):
     """
-    Calls the new style:
-        client.chat.completions.create(...)
-    Then parses the result as JSON.
+    Runs six AI evaluations based on different evaluator backgrounds.
+    Returns six separate JSON responses.
     """
-    prompt_text = build_prompt(high_level_pitch, project_pitch)
+    roles = ["entrepreneur", "financial", "marketing", "legal", "cto", "developer"]
+    results = {}
 
-    try:
-        response = client.chat.completions.create(
-            messages=[{"role": "user", "content": prompt_text}],
-            model=MODEL_NAME,
-            temperature=0.0
-        )
-        # The new interface returns an object with .choices
-        ai_text = response.choices[0].message.content.strip()
-        # Parse JSON from AI text
-        result_json = json.loads(ai_text)
-        return result_json
-    
-    except Exception as e:
-        print(f"Error calling OpenAI API: {e}")
-        return None
+    for role in roles:
+        prompt_text = build_prompt(high_level_pitch, project_pitch, role)
+
+        try:
+            response = client.chat.completions.create(
+                messages=[{"role": "user", "content": prompt_text}],
+                model=MODEL_NAME,
+                temperature=0.0
+            )
+            ai_text = response.choices[0].message.content.strip()
+            results[role] = json.loads(ai_text)  # Store each role's result separately
+        
+        except Exception as e:
+            print(f"Error calling OpenAI API for {role}: {e}")
+            results[role] = {}  # Return an empty dictionary for the failed role
+
+    return results  # Returns a dictionary containing all six evaluations
 
 def calculate_weighted_score(ai_result):
     """
@@ -116,37 +142,19 @@ def main():
     with open("datain/submissions.json", "r", encoding="utf-8") as f:
         submissions = json.load(f)
 
-    results = []
-
     for sub in submissions:
-        # Extract pitch fields
         high_pitch = sub.get("high_level_pitch", "")
         proj_pitch = sub.get("project_pitch", "")
 
-        # Evaluate via new 'client' interface
-        ai_evaluation = get_ai_evaluation(high_pitch, proj_pitch)
+        ai_evaluations = get_ai_evaluation(high_pitch, proj_pitch)
 
-        overall_score = 0
-        if ai_evaluation:
-            overall_score = calculate_weighted_score(ai_evaluation)
+        # Save each evaluation separately
+        for role, evaluation in ai_evaluations.items():
+            filename = f"dataout/{sub.get('id')}_{role}.json"
+            with open(filename, "w", encoding="utf-8") as out:
+                json.dump(evaluation, out, indent=2, ensure_ascii=False)
 
-        # Build a result record
-        result_entry = {
-            "id": sub.get("id"),
-            "name": sub.get("name"),
-            "ai_evaluation": ai_evaluation or {},
-            "overall_score": overall_score
-        }
-        results.append(result_entry)
-
-    # Sort results by overall_score descending
-    results.sort(key=lambda x: x["overall_score"], reverse=True)
-
-    # Output to dataout/evaluate_submissions.json
-    with open("dataout/evaluate_submissions.json", "w", encoding="utf-8") as out:
-        json.dump(results, out, indent=2, ensure_ascii=False)
-
-    print("Evaluation complete. Results written to dataout/evaluate_submissions.json")
+    print("Evaluations complete. Individual role-based results saved in dataout/")
 
 if __name__ == "__main__":
     main()
