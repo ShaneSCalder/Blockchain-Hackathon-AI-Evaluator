@@ -1,0 +1,68 @@
+[
+    {
+      "id": "applicant1",
+      "applicant_type": "Project Owner",
+      "responses": {
+        "q1": "I aim to build a DeFi platform on the XRP Ledger that enables seamless cross-border micro-lending using tokenized assets.",
+        "q2": "As a project owner, I'm specifically focusing on creating easy-to-use smart contracts for micro-loans. The idea is still in early prototype stage, but I've tested some basic functionality on a testnet.",
+        "q3": "I first discovered XRPL Commons Aquarium from an online developer forum where someone mentioned the residency.",
+        "q4": "I love creative writing, especially sci-fi, and I also spend time reading about new blockchain projects. What gets me up is the idea of building a more inclusive financial system.",
+        "q5": "I'm a full-stack developer (Python, JavaScript), but I also have experience with Rust. I'm good at systems design and user experience research.",
+        "q6": "I hope to make DeFi more accessible to people who currently do not have traditional banking services. My legacy would be fostering a community that solves real-world problems.",
+        "q7": "3"
+      }
+    },
+    {
+      "id": "applicant2",
+      "applicant_type": "Developer",
+      "responses": {
+        "q1": "I would like to contribute to open-source AI/ML tools that run on-chain, and maybe build an analytics tool to track NFT performance on the XRP Ledger.",
+        "q2": "As a developer, I'm thinking about working on a robust Python library that interacts with XRPL NFT data. I draw inspiration from other AI-driven NFT analytics projects on Ethereum.",
+        "q3": "A friend introduced me to XRPL Commons after seeing my GitHub contributions in ML ops.",
+        "q4": "Outside of coding, I'm a big gamer (RPGs mostly) and I also enjoy hiking to clear my head. The challenge of solving tough problems motivates me daily.",
+        "q5": "Expert in Python & PyTorch, some experience in React for frontends, and I've dabbled in Solidity for Ethereum. I'm also good at data visualization.",
+        "q6": "I'd love to be part of bridging the gap between AI and blockchain—making data more transparent and trustless. Eventually, I'd like to help build truly decentralized AI solutions.",
+        "q7": "5"
+      }
+    },
+    {
+      "id": "applicant3",
+      "applicant_type": "Project Owner & Developer",
+      "responses": {
+        "q1": "I want to integrate AI-based NFT creation, letting users generate unique art minted directly on XRPL.",
+        "q2": "I'm both a founder and a coder. My prototype uses a GAN model for art generation, but I need to incorporate XRPL's NFT functionalities. I'm halfway through building a small alpha version.",
+        "q3": "I follow XRPL Commons on Twitter and saw an announcement about this specific AI + blockchain cohort.",
+        "q4": "In my free time, I test new AI tools (like Stable Diffusion forks) and jam with fellow devs on Discord. I love the creative aspect of coding new solutions.",
+        "q5": "I'm a full-stack dev (TypeScript, Python), and I'm comfortable with AI frameworks like TensorFlow. Also, I'm fairly good at DevOps and server configurations.",
+        "q6": "I hope to create a platform that rewards artists fairly and leverages AI to expand creative possibilities. I'd like to see more inclusive revenue models in the NFT space.",
+        "q7": "4"
+      }
+    },
+    {
+      "id": "applicant4",
+      "applicant_type": "Developer",
+      "responses": {
+        "q1": "I want to develop an AI-driven recommendation system for DApps on the XRP Ledger, helping users find new DeFi or NFT projects.",
+        "q2": "As a developer, I'd love to explore building a personalized aggregator that surfaces interesting projects. I’m inspired by aggregator sites like DeFiLlama, but want to add machine learning.",
+        "q3": "I read about the Aquarium Residency in the official XRPL Dev Newsletter and thought it was a great opportunity.",
+        "q4": "I'm a big fan of hackathons. In my downtime, I also like playing chess and reading about new cryptography techniques. Solving interesting puzzles energizes me.",
+        "q5": "Backend dev (Go, Python), some ML experience (Scikit-learn, pandas), and I'm comfortable with Docker + Kubernetes for deployment.",
+        "q6": "My ambition is to grow into a thought leader who makes decentralized finance understandable and user-friendly for the mass market.",
+        "q7": "2"
+      }
+    },
+    {
+      "id": "applicant5",
+      "applicant_type": "Project Owner",
+      "responses": {
+        "q1": "I plan to create a decentralized AI-based governance system for DAO-like communities on the XRP Ledger.",
+        "q2": "I'm building a prototype around on-chain voting, where AI algorithms help identify potential voter biases and propose balanced solutions. It's still conceptual but I've done some preliminary research on code architecture.",
+        "q3": "A colleague at a startup incubator pointed me to XRPL Commons and recommended I apply for the residency.",
+        "q4": "I'm a part-time musician, and I also love traveling to blockchain conferences to learn from different ecosystems. I thrive on new ideas and the synergy between communities.",
+        "q5": "Professional background in data science (R, Python, some Julia). I'm also decent at community-building—I've organized hackathons and meetups.",
+        "q6": "I'd like to leave behind a framework for decentralized decision-making that truly empowers the community, rather than just large token holders.",
+        "q7": "1"
+      }
+    }
+  ]
+  
